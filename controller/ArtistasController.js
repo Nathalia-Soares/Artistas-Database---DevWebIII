@@ -107,11 +107,7 @@ function converterEpsParaObjeto(eps) {
             if (!epsArray[index]) {
                 epsArray[index] = {};
             }
-            epsArray[index].imgUrl = eps[key];
             epsArray[index].nome = eps[key];
-            epsArray[index].ano_lancamento = eps[key];
-            epsArray[index].gravadora = eps[key];
-            epsArray[index].lista_musicas = eps[key];
         }
     }
     return epsArray;
@@ -143,17 +139,19 @@ router.get('/artistas/:artistaId/eps/editar_ep/:epId', (req, res) => {
     });
 });
 
-router.post('/artistas/:artistaId/eps/editar_ep/:epId/salvar',  uploadArtistas.single('imagem'), (req, res) => {
-    const { nome, ano_lancamento, gravadora, lista_musicas } = req.body;
+router.post('/artistas/:artistaId/eps/editar_ep/:epId/salvar', (req, res) => {
+    const { nome, ano_lancamento, gravadora, lista_musicas, imgUrl } = req.body;
     Artistas.findOneAndUpdate(
         { _id: req.params.artistaId, 'eps._id': req.params.epId },
-        { $set: { 
-            'eps.$.imgUrl': '/img/uploads/' + req.file.filename, 
-            'eps.$.nome': nome, 
-            'eps.$.ano_lancamento': ano_lancamento, 
-            'eps.$.gravadora': gravadora, 
-            'eps.$.lista_musicas': lista_musicas,
-        } }
+        { 
+            $set: { 
+                'eps.$.nome': nome, 
+                'eps.$.ano_lancamento': ano_lancamento,
+                'eps.$.gravadora': gravadora,
+                'eps.$.lista_musicas': lista_musicas,
+                'eps.$.imgUrl': imgUrl
+            } 
+        }
     )
         .then(() => {
             res.redirect(`/artistas/${req.params.artistaId}/eps/editar_ep/${req.params.epId}`);

@@ -47,10 +47,10 @@
         </div>
     </button>
 
-    {{#each artista.eps}}
+    {{#each artista.eps as |ep index|}}
     <div class='control block-cube block-input'>
-        <input id="eps[{{@index}}].nome" name='eps[{{@index}}][nome]' placeholder='Nome do EP' type='text'
-            value="{{this.nome}}">
+        <input type="hidden" name="eps[{{index}}][_id]" value="{{ep._id}}">
+        <input type="text" name="eps[{{index}}][nome]" value="{{ep.nome}}">
         <div class='bg-top'>
             <div class='bg-inner'></div>
         </div>
