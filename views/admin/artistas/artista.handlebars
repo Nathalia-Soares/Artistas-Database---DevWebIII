@@ -1,0 +1,97 @@
+<main>
+    <div class="container_main">
+        <div class="container-fluid py-5">
+            <h2>Artistas Database: </h2>
+            <hr>
+
+            {{#each artistas}}
+
+            <div class="container_info">
+                <div class="container_info_info">
+                    <div class="container-img">
+                        <img src="{{ imgUrl }}" width="150px" />
+                    </div>
+                    <div class="container-text">
+                        <b>Nome: </b>{{nome}}
+                        <br>
+                        <b>Genero: </b>{{genero}}
+                        <br><br>
+                        {{#each eps}}
+                        <b>Ep: </b>{{nome}}
+                        <a href="/artistas/artistas/{{../_id}}/eps/{{_id}}">
+                            <button type="button" class='btn block-cube block-cube-hover'>
+                                <div class='bg-top'>
+                                    <div class='bg-inner'></div>
+                                </div>
+                                <div class='bg-right'>
+                                    <div class='bg-inner'></div>
+                                </div>
+                                <div class='bg'>
+                                    <div class='bg-inner'></div>
+                                </div>
+                                <div class='text'>
+                                    +
+                                </div>
+                            </button>
+                        </a>
+                        <br>
+                        {{/each}}
+                        <div class="button-ops">
+                            <a href="/artistas/editar_artista/{{_id}}">
+                                <button type="button" class='btn block-cube block-cube-hover'>
+                                    <div class='bg-top'>
+                                        <div class='bg-inner'></div>
+                                    </div>
+                                    <div class='bg-right'>
+                                        <div class='bg-inner'></div>
+                                    </div>
+                                    <div class='bg'>
+                                        <div class='bg-inner'></div>
+                                    </div>
+                                    <div class='text'>
+                                        Editar Artista
+                                    </div>
+                                </button>
+                            </a>
+
+                            <a href="/artistas/deletar_artista/{{_id}}">
+                                <button type="button" class='btn block-cube block-cube-hover'>
+                                    <div class='bg-top'>
+                                        <div class='bg-inner'></div>
+                                    </div>
+                                    <div class='bg-right'>
+                                        <div class='bg-inner'></div>
+                                    </div>
+                                    <div class='bg'>
+                                        <div class='bg-inner'></div>
+                                    </div>
+                                    <div class='text'>
+                                        Excluir Artista
+                                    </div>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+            <div class="container_btn">
+                <a href="/artistas/adicionar">
+                    <button type="button" class='btn block-cube block-cube-hover'>
+                        <div class='bg-top'>
+                            <div class='bg-inner'></div>
+                        </div>
+                        <div class='bg-right'>
+                            <div class='bg-inner'></div>
+                        </div>
+                        <div class='bg'>
+                            <div class='bg-inner'></div>
+                        </div>
+                        <div class='text'>
+                            Cadastrar Novo Artista
+                        </div>
+                    </button>
+                </a>
+            </div>
+</main>

@@ -1,0 +1,66 @@
+<main>
+    <div class="container_main">
+        <div class="container-fluid py-5">
+
+            <h2>Ep de {{artista_nome}}: </h2>
+            <hr>
+
+            <div class="container_info">
+                <div class="container_info_info">
+                    <div class="container-img">
+                        <img src="{{ imgUrl }}" alt="{{ nome }}">
+                    </div>
+                    <div class="container-text">
+                        <b>Nome: </b>{{ nome }}
+                        <br>
+                        <b>Ano de Lançamento: </b>{{ ano_lancamento }}
+                        <br>
+                        <b>Gravadora: </b>{{ gravadora }}
+                        <br><br>
+                        <b>Lista de Músicas: </b>
+                        <br><br>
+                        {{#each lista_musicas}}
+                        {{ this }}
+                        <br>
+                        {{/each}}
+                        <div class="button-ops">
+                            <a href="/artistas/artistas/{{artista_id}}/eps/editar_ep/{{ _id }}">
+                                <button type="button" class='btn block-cube block-cube-hover'>
+                                    <div class='bg-top'>
+                                        <div class='bg-inner'></div>
+                                    </div>
+                                    <div class='bg-right'>
+                                        <div class='bg-inner'></div>
+                                    </div>
+                                    <div class='bg'>
+                                        <div class='bg-inner'></div>
+                                    </div>
+                                    <div class='text'>
+                                        Editar Ep
+                                    </div>
+                                </button>
+                            </a>
+
+                            <a href="/artistas/artistas/{{artista_id}}/eps/deletar_ep/{{ _id }}">
+                                <button type="button" class='btn block-cube block-cube-hover'>
+                                    <div class='bg-top'>
+                                        <div class='bg-inner'></div>
+                                    </div>
+                                    <div class='bg-right'>
+                                        <div class='bg-inner'></div>
+                                    </div>
+                                    <div class='bg'>
+                                        <div class='bg-inner'></div>
+                                    </div>
+                                    <div class='text'>
+                                        Excluir Ep
+                                    </div>
+                                </button>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

@@ -1,0 +1,83 @@
+{{#if artista}}
+<form class='form' action="/artistas/editar_artista/{{artista._id}}" method="POST">
+    <div class='control'>
+        <h1>
+            Editar Artista
+        </h1>
+    </div>
+
+    <div class='control block-cube block-input'>
+        <input id="nome" name='nome' placeholder='Nome' type='text' value="{{artista.nome}}">
+        <div class='bg-top'>
+            <div class='bg-inner'></div>
+        </div>
+        <div class='bg-right'>
+            <div class='bg-inner'></div>
+        </div>
+        <div class='bg'>
+            <div class='bg-inner'></div>
+        </div>
+    </div>
+
+    <div class='control block-cube block-input'>
+        <input id="genero" name='genero' placeholder='Genero' type='text' value="{{artista.genero}}">
+        <div class='bg-top'>
+            <div class='bg-inner'></div>
+        </div>
+        <div class='bg-right'>
+            <div class='bg-inner'></div>
+        </div>
+        <div class='bg'>
+            <div class='bg-inner'></div>
+        </div>
+    </div>
+
+    <button class='btn block-cube block-cube-hover' onclick="addCampo()" type='button'>
+        <div class='bg-top'>
+            <div class='bg-inner'></div>
+        </div>
+        <div class='bg-right'>
+            <div class='bg-inner'></div>
+        </div>
+        <div class='bg'>
+            <div class='bg-inner'></div>
+        </div>
+        <div class='text'>
+            Adicionar EP
+        </div>
+    </button>
+
+    {{#each artista.eps}}
+    <div class='control block-cube block-input'>
+        <input id="eps[{{@index}}].nome" name='eps[{{@index}}][nome]' placeholder='Nome do EP' type='text'
+            value="{{this.nome}}">
+        <div class='bg-top'>
+            <div class='bg-inner'></div>
+        </div>
+        <div class='bg-right'>
+            <div class='bg-inner'></div>
+        </div>
+        <div class='bg'>
+            <div class='bg-inner'></div>
+        </div>
+    </div>
+    {{/each}}
+
+    <div id='inputFields'></div>
+
+    <button type="submit" class='btn block-cube block-cube-hover'>
+        <div class='bg-top'>
+            <div class='bg-inner'></div>
+        </div>
+        <div class='bg-right'>
+            <div class='bg-inner'></div>
+        </div>
+        <div class='bg'>
+            <div class='bg-inner'></div>
+        </div>
+        <div class='text'>
+            Salvar
+        </div>
+    </button>
+    {{/if}}
+</form>
